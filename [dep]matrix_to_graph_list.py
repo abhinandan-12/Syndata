@@ -1,6 +1,7 @@
 import networkx as nx
 import numpy as np
 import matplotlib.pyplot as plt
+import scipy
 
 imported=np.genfromtxt('connections.csv', delimiter=",", dtype=str)
 nodes=[]
@@ -20,18 +21,8 @@ g = nx.from_pandas_adjacency(a)
 nx.draw(g, with_labels=True)
 for line in nx.generate_edgelist(g, data=False):
     test = []
-    test.append(line)
     print(line)
-'''    
-    file2 = open('test.csv', 'a', newline='', delimiter)
-    with file2:
-        write = csv.writer(file2)
-        write.writerows(line)
-'''
-np.savetxt("test.csv",
-           test,
-           delimiter=", ",
-           fmt='% s')
+#nx.draw(g,with_labels=True)
 plt.draw()
 plt.savefig("graph.png", dpi=600)
 plt.show()

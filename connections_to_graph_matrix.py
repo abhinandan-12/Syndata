@@ -1,9 +1,9 @@
 import networkx as nx
 import numpy as np
 import matplotlib.pyplot as plt
-import scipy
 
-imported=np.genfromtxt('connections.csv', delimiter=",", dtype=str)
+imported=np.genfromtxt('connections_generated.csv', delimiter=",", dtype=str)
+#extract nodes
 nodes=[]
 for i in imported:
     for j in i:
@@ -11,15 +11,16 @@ for i in imported:
             nodes.append(j)
 nodes=sorted(nodes)
 print("Nodes: ", nodes)
+#plot graph and matrix
 g=nx.Graph()
 g.add_nodes_from(nodes)
 g.add_edges_from(imported)
-a = nx.to_pandas_adjacency(g, dtype=int)
+mat=nx.to_pandas_adjacency(g, dtype=int)
 print("Adjacency Matrix:")
-print(a)
-g = nx.from_pandas_adjacency(a)
+print(mat)
+mat.to_csv("matrix_exported.csv", header=True, index=True)
 nx.draw(g, with_labels=True)
 plt.draw()
-plt.savefig("graph.png", dpi=600)
+plt.savefig("list2graph.png", dpi=600)
 plt.show()                                                                                                                                                                                                                                                                                                       
 

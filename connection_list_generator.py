@@ -25,4 +25,4 @@ def generate(lim):
 inp=int(input("Enter your limit: "))
 gen=(generate(inp))
 print(gen)
-numpy.savetxt('connections.csv', gen, delimiter=',', fmt="%s")
+numpy.savetxt('connections_generated.csv', gen, delimiter=',', fmt="%s")
