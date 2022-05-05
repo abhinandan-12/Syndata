@@ -5,8 +5,9 @@ import matplotlib.pyplot as plt
 #import matrix
 choice=str(input("Does csv file contain header and index (y/n): "))
 if choice=='y':
-    mat=pd.read_csv("matrix_generated.csv", header='infer', index_col=0)
-
+    mat=pd.read_csv("matrix_generated.csv", header=None)
+    mat= mat.iloc[1:, 1:]
+    print(mat)
 elif choice=='n':
     mat=pd.read_csv("matrix_generated.csv", header=None)
 
