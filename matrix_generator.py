@@ -1,5 +1,4 @@
 import networkx as nx
-import matplotlib.pyplot as plt
 
 nodes = int(input("Enter number of nodes: "))
 edges = int(input("Enter number of edges: "))

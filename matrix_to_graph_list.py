@@ -4,12 +4,11 @@ import matplotlib.pyplot as plt
 
 #import matrix
 choice=str(input("Does csv file contain header and index (y/n): "))
+mat=pd.read_csv("matrix_generated.csv", header=None)
 if choice=='y':
-    mat=pd.read_csv("matrix_generated.csv", header=None)
     mat= mat.iloc[1:, 1:]
-    print(mat)
 elif choice=='n':
-    mat=pd.read_csv("matrix_generated.csv", header=None)
+    pass
 
 #draw graph
 g=nx.from_pandas_adjacency(mat)
