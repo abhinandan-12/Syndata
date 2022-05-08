@@ -19,7 +19,6 @@ def generate(lim):
             unit=[]
             continue
         items = list(set(x[0] for x in data))
-        #print(items)
         if sorted(items)==list(range(max(items)+1)):
             break
     return numpy.array(sorted(data))
