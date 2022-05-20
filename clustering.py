@@ -1,9 +1,9 @@
-# synthetic classification dataset
 from numpy import unique
 from numpy import where
 import numpy
 from sklearn.datasets import make_classification
-from sklearn.cluster import AgglomerativeClustering
+#from sklearn.cluster import AgglomerativeClustering
+import sklearn.cluster as skc
 from matplotlib import pyplot
 # define dataset
 #X, y = make_classification(n_samples=1000, n_features=2, n_informative=2, n_redundant=0, n_clusters_per_class=1, random_state=4)
@@ -24,17 +24,24 @@ for k in imported:
     listy.append(k[1])
 #pyplot.scatter(listx, listy)
 #pyplot.show()
-model = AgglomerativeClustering(n_clusters=2)
-# fit model and predict clusters
+
+#CLUSTERINGS
+#model = skc.AgglomerativeClustering(n_clusters=2)
+#model = skc.Birch(threshold=0.01, n_clusters=2)
+#model = skc.DBSCAN(eps=0.30, min_samples=9)
+#model = skc.KMeans(n_clusters=2)
+#model = skc.MiniBatchKMeans(n_clusters=2)
+#model = skc.MeanShift()
+#model = skc.OPTICS(eps=0.8, min_samples=10)
+model = skc.SpectralClustering(n_clusters=2)
+
+
 yhat = model.fit_predict(imported)
-# retrieve unique clusters
+
 clusters = unique(yhat)
-# create scatter plot for samples from each cluster
+
 for cluster in clusters:
-	# get row indexes for samples with this cluster
 	row_ix = where(yhat == cluster)
-	# create scatter of these samples
 	pyplot.scatter(imported[row_ix, 0], imported[row_ix, 1])
-# show the plot
+
 pyplot.show()
-'''
