@@ -52,7 +52,7 @@ for k in K:
     mapping1[k] = sum(np.min(cdist(imported, kmeanModel.cluster_centers_,
                                    'euclidean'), axis=1)) / imported.shape[0]
     mapping2[k] = kmeanModel.inertia_
-print("Optimal number of clusters", mapping2.index(max(mapping2))+2)
+#print("Optimal number of clusters", mapping2.index(max(mapping2))+2)
 plt2 = plt.figure(2)
 plt.plot(K, distortions, 'bx-')
 plt.xlabel('Values of K')
