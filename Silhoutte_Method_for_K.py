@@ -8,7 +8,7 @@ choice=int(input("(1) Use static db or (2) Use random data: "))
 if choice==1:
     imported=np.genfromtxt('db_connections.csv', delimiter=",", dtype=int)
 elif choice==2:
-    imported=np.genfromtxt('connections_generated.csv', delimiter=",", dtype=int)
+    imported=np.genfromtxt('connections_exported.csv', delimiter=",", dtype=int)
 #extract nodes
 nodes=[]
 for i in imported:
@@ -23,7 +23,7 @@ g.add_nodes_from(nodes)
 g.add_edges_from(imported)
 kmeans = KMeans().fit_predict(imported)
 plt1 = plt.figure(1)
-nx.draw_random(g, with_labels=False, node_size=20, width=0.3)
+nx.draw(g, with_labels=False, node_size=20, width=0.3)
 xaxis = []
 yaxis = []
 for x in imported:
@@ -39,6 +39,8 @@ for n in K:
     labels = algorithm.labels_
     sil.append(silhouette_score(imported, labels, metric = 'euclidean'))
 print("Optimal number of clusters", sil.index(max(sil))+2) #loop starts with 2
+with open('optimal_clusters.txt', 'w') as file:
+    file.write(str(sil.index(max(sil))+2))
 plt2 = plt.figure(2)
 plt.plot(K, sil, 'bx-')
 plt.xlabel('Values of K')
