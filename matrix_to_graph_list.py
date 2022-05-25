@@ -29,3 +29,4 @@ print("Connections:")
 for line in nx.generate_edgelist(g, delimiter=',', data=False):
     print(line)
 nx.write_edgelist(g, 'connections_exported.csv', delimiter=',', data=False)
+nx.write_edgelist(g, 'edgelist.txt')

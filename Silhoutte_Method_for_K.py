@@ -38,7 +38,7 @@ for n in K:
     algorithm.fit(imported)
     labels = algorithm.labels_
     sil.append(silhouette_score(imported, labels, metric = 'euclidean'))
-print("Optimal number of clusters", sil.index(max(sil))+2)
+print("Optimal number of clusters", sil.index(max(sil))+2) #loop starts with 2
 plt2 = plt.figure(2)
 plt.plot(K, sil, 'bx-')
 plt.xlabel('Values of K')
