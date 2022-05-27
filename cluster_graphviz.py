@@ -3,6 +3,7 @@ import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
 import csv
+import json
 
 coords=[]
 positions=[]
@@ -18,6 +19,8 @@ with open('embedding.emb', 'r') as file:
 
 Z=np.array(positions)
 
+pos = {int(k):tuple(int(i) for i in v) for k,v in json.load(open('positions.pkl')).items()}
+
 g = nx.read_edgelist('edgelist.txt', nodetype=int)
 with open("optimal_clusters.txt",'r') as file:
     clusters=int(file.read())
@@ -26,12 +29,12 @@ G = nx.Graph()
 G.add_nodes_from(sorted(g.nodes(data=True)))
 G.add_edges_from(g.edges(data=True))
 nodelist = sorted(nx.nodes(g))
-
+d = dict(G.degree)
 kmeans = KMeans(n_clusters=clusters).fit(Z) # apply kmeans on Z
 labels=kmeans.labels_  # get the cluster labels of the nodes.
 print("Clusters:\n",labels)
 
-nx.draw(G, node_color=labels, cmap=plt.cm.prism, width=0.3, with_labels=True)
+nx.draw(G, pos, node_color=labels, font_size=6, node_size=[d[k]*50 for k in d], cmap=plt.cm.prism, width=0.3, with_labels=True)
 #print("Colour maps:\n",color_map)
 print("Nodes:\n",nodelist)
 plt.show()

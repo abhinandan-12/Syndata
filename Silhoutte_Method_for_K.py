@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import networkx as nx
 from sklearn.cluster import KMeans
 import numpy as np
+import json
 
 choice=int(input("(1) Use static db or (2) Use random data: "))
 if choice==1:
@@ -22,8 +23,9 @@ g=nx.Graph()
 g.add_nodes_from(nodes)
 g.add_edges_from(imported)
 kmeans = KMeans().fit_predict(imported)
+pos = {int(k):tuple(int(i) for i in v) for k,v in json.load(open('positions.pkl')).items()}
 plt1 = plt.figure(1)
-nx.draw(g, with_labels=False, node_size=20, width=0.3)
+nx.draw(g, pos, with_labels=False, node_size=20, width=0.3)
 xaxis = []
 yaxis = []
 for x in imported:
