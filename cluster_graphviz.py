@@ -18,6 +18,7 @@ with open('embedding.emb', 'r') as file:
         coords=[]
 
 Z=np.array(positions)
+print(Z)
 
 pos = {int(k):tuple(int(i) for i in v) for k,v in json.load(open('positions.pkl')).items()}
 
@@ -28,6 +29,7 @@ print("Number of clusters= ", clusters)
 G = nx.Graph()
 G.add_nodes_from(sorted(g.nodes(data=True)))
 G.add_edges_from(g.edges(data=True))
+print(G.nodes)
 nodelist = sorted(nx.nodes(g))
 d = dict(G.degree)
 kmeans = KMeans(n_clusters=clusters).fit(Z) # apply kmeans on Z
