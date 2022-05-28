@@ -12,6 +12,7 @@ G = nx.Graph()
 G.add_nodes_from(sorted(g.nodes(data=True)))
 G.add_edges_from(g.edges(data=True))
 nodelist = sorted(nx.nodes(g))
+d=dict(G.degree)
 
 # sort the embedding based on node index in the first column in X
 X=X[X[:,0].argsort()]
@@ -22,7 +23,7 @@ kmeans = KMeans(n_clusters=clusters).fit(Z) # apply kmeans on Z
 labels=kmeans.labels_  # get the cluster labels of the nodes.
 print("Clusters:\n",labels)
 
-nx.draw(G, node_color=labels, cmap=plt.cm.prism, width=0.3, with_labels=True)
+nx.draw(G, node_color=labels, font_size=6, cmap=plt.cm.prism, width=0.3, with_labels=True, node_size=[d[k]*50 for k in d])
 #print("Colour maps:\n",color_map)
 print("Nodes:\n",nodelist)
 plt.show()
