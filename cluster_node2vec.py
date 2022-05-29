@@ -23,7 +23,7 @@ kmeans = KMeans(n_clusters=clusters).fit(Z) # apply kmeans on Z
 labels=kmeans.labels_  # get the cluster labels of the nodes.
 print("Clusters:\n",labels)
 
-nx.draw(G, node_color=labels, font_size=6, cmap=plt.cm.prism, width=0.3, with_labels=True, node_size=[d[k]*50 for k in d])
+nx.draw(G, node_color=labels, font_size=6, cmap=plt.cm.rainbow, width=0.3, with_labels=True, node_size=[d[k]*50 for k in d])
 #print("Colour maps:\n",color_map)
 print("Nodes:\n",nodelist)
 plt.show()

@@ -32,8 +32,8 @@ for k in imported:
 #model = skc.KMeans(n_clusters=2)
 #model = skc.MiniBatchKMeans(n_clusters=2)
 #model = skc.MeanShift()
-#model = skc.OPTICS(eps=0.8, min_samples=10)
-model = skc.SpectralClustering(n_clusters=2)
+model = skc.OPTICS(eps=0.8, min_samples=10)
+#model = skc.SpectralClustering(n_clusters=2)
 
 
 yhat = model.fit_predict(imported)
