@@ -19,7 +19,7 @@ X=X[X[:,0].argsort()]
 
 Z=X[0:X.shape[0],1:X.shape[1]] # remove the node index from X and save in Z
 
-kmeans = KMeans(n_clusters=clusters).fit(Z) # apply kmeans on Z
+kmeans = KMeans(n_clusters=clusters, init='k-means++').fit(Z) # apply kmeans on Z
 labels=kmeans.labels_  # get the cluster labels of the nodes.
 print("Clusters:\n",labels)
 
