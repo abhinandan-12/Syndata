@@ -1,7 +1,7 @@
 from sklearn.metrics import silhouette_score
 import matplotlib.pyplot as plt
 import networkx as nx
-from sklearn.cluster import KMeans
+import sklearn.cluster as skc
 import numpy as np
 import json
 
@@ -22,9 +22,8 @@ print("Nodes: ", nodes)
 g=nx.Graph()
 g.add_nodes_from(nodes)
 g.add_edges_from(imported)
-kmeans = KMeans().fit_predict(imported)
+kmeans = skc.KMeans().fit_predict(imported)
 plt1 = plt.figure(1)
-nx.draw(g, with_labels=False, node_size=20, width=0.3)
 xaxis = []
 yaxis = []
 for x in imported:
@@ -35,7 +34,7 @@ sil = []
 # Number of clusters in range 2-10
 K = range(2, 10) # 2, 3, 4, 5
 for n in K:
-    algorithm = KMeans(n_clusters = n)
+    algorithm = skc.KMeans(n_clusters = n)
     algorithm.fit(imported)
     labels = algorithm.labels_
     sil.append(silhouette_score(imported, labels, metric = 'euclidean'))

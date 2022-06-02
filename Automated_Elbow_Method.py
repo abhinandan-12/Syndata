@@ -39,3 +39,5 @@ visualizer.fit(imported)        # Fit the data to the visualizer
 visualizer.show()  # Finalize and render the figure
 elbowval = visualizer.elbow_value_
 print("Optimal number of Clusters:", elbowval)
+with open('optimal_clusters.txt', 'w') as file:
+    file.write(str(elbowval))

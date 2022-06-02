@@ -1,4 +1,4 @@
-from sklearn.cluster import KMeans
+import sklearn.cluster as sk
 import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
@@ -32,8 +32,15 @@ G.add_edges_from(g.edges(data=True))
 print(G.nodes)
 nodelist = sorted(nx.nodes(g))
 d = dict(G.degree)
-kmeans = KMeans(n_clusters=clusters).fit(Z) # apply kmeans on Z
-labels=kmeans.labels_  # get the cluster labels of the nodes.
+
+cluster = sk.KMeans(n_clusters=clusters).fit(Z)
+#cluster = sk.AgglomerativeClustering(n_clusters=clusters).fit(Z)
+#cluster = sk.MiniBatchKMeans(n_clusters=clusters).fit(Z)
+#cluster = sk.Birch(n_clusters=clusters).fit(Z)
+#cluster = sk.SpectralClustering(n_clusters=clusters).fit(Z)
+#cluster = sk.BisectingKMeans(n_clusters=clusters).fit(Z)
+
+labels=cluster.labels_  # get the cluster labels of the nodes.
 print("Clusters:\n",labels)
 
 nx.draw(G, pos, node_color=labels, font_size=6, node_size=[d[k]*50 for k in d], cmap=plt.cm.rainbow, width=0.3, with_labels=True)

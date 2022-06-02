@@ -1,4 +1,4 @@
-from sklearn.cluster import KMeans
+import sklearn.cluster as sk
 import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
@@ -19,8 +19,14 @@ X=X[X[:,0].argsort()]
 
 Z=X[0:X.shape[0],1:X.shape[1]] # remove the node index from X and save in Z
 
-kmeans = KMeans(n_clusters=clusters, init='k-means++').fit(Z) # apply kmeans on Z
-labels=kmeans.labels_  # get the cluster labels of the nodes.
+cluster = sk.KMeans(n_clusters=clusters).fit(Z)
+#cluster = sk.AgglomerativeClustering(n_clusters=clusters).fit(Z)
+#cluster = sk.MiniBatchKMeans(n_clusters=clusters).fit(Z)
+#cluster = sk.Birch(n_clusters=clusters).fit(Z)
+#cluster = sk.SpectralClustering(n_clusters=clusters).fit(Z)
+#cluster = sk.BisectingKMeans(n_clusters=clusters).fit(Z)
+
+labels=cluster.labels_  # get the cluster labels of the nodes.
 print("Clusters:\n",labels)
 
 nx.draw(G, node_color=labels, font_size=6, cmap=plt.cm.rainbow, width=0.3, with_labels=True, node_size=[d[k]*50 for k in d])
