@@ -8,7 +8,7 @@ choice=int(input("(1) Use static db or (2) Use random data: "))
 if choice==1:
     imported=np.genfromtxt('db_connections.csv', delimiter=",", dtype=int)
 elif choice==2:
-    imported=np.genfromtxt('connections_generated.csv', delimiter=",", dtype=int)
+    imported=np.genfromtxt('connections_exported.csv', delimiter=",", dtype=int)
 #extract nodes
 nodes=[]
 for i in imported:

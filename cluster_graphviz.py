@@ -32,20 +32,23 @@ G.add_edges_from(g.edges(data=True))
 print(G.nodes)
 nodelist = sorted(nx.nodes(g))
 d = dict(G.degree)
+loop = int(input("Graph output loop: "))
+for i in range(0,loop):
+    #cluster = sk.KMeans(n_clusters=clusters).fit(Z)
+    #cluster = sk.AgglomerativeClustering(n_clusters=clusters).fit(Z)
+    #cluster = sk.MiniBatchKMeans(n_clusters=clusters).fit(Z)
+    #cluster = sk.Birch(n_clusters=clusters).fit(Z)
+    #cluster = sk.SpectralClustering(n_clusters=clusters).fit(Z)
+    cluster = sk.BisectingKMeans(n_clusters=clusters).fit(Z)
 
-cluster = sk.KMeans(n_clusters=clusters).fit(Z)
-#cluster = sk.AgglomerativeClustering(n_clusters=clusters).fit(Z)
-#cluster = sk.MiniBatchKMeans(n_clusters=clusters).fit(Z)
-#cluster = sk.Birch(n_clusters=clusters).fit(Z)
-#cluster = sk.SpectralClustering(n_clusters=clusters).fit(Z)
-#cluster = sk.BisectingKMeans(n_clusters=clusters).fit(Z)
+    labels=cluster.labels_  # get the cluster labels of the nodes.
+    print("Clusters:\n",labels)
 
-labels=cluster.labels_  # get the cluster labels of the nodes.
-print("Clusters:\n",labels)
-
-nx.draw(G, pos, node_color=labels, font_size=6, node_size=[d[k]*50 for k in d], cmap=plt.cm.rainbow, width=0.3, with_labels=True)
-#print("Colour maps:\n",color_map)
-print("Nodes:\n",nodelist)
-plt.show()
-plt.close()
+    nx.draw(G, pos, node_color=labels, font_size=6, node_size=[d[k]*50 for k in d], cmap=plt.cm.rainbow, width=0.3, with_labels=True)
+    #print("Colour maps:\n",color_map)
+    print("Nodes:\n",nodelist)
+    #comment out next line to skip file output
+    #plt.savefig("Graphviz/BisectingKMeans/bskm{}.png".format(i))
+    plt.show()
+    plt.close()
 
