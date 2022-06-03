@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import sklearn.cluster as skc
 import numpy as np
-import json
 
 choice=int(input("(1) Use static db or (2) Use random data: "))
 if choice==1:
