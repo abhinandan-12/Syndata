@@ -9,6 +9,7 @@ if choice==1:
     imported=np.genfromtxt('db_connections.csv', delimiter=",", dtype=int)
 elif choice==2:
     imported=np.genfromtxt('connections_exported.csv', delimiter=",", dtype=int)
+
 #extract nodes
 nodes=[]
 for i in imported:
@@ -17,6 +18,7 @@ for i in imported:
             nodes.append(j)
 nodes=sorted(nodes)
 print("Nodes: ", nodes)
+
 #plot graph and matrix
 g=nx.Graph()
 g.add_nodes_from(nodes)
@@ -28,15 +30,11 @@ yaxis = []
 for x in imported:
     xaxis.append(x[0])
     yaxis.append(x[1])
-'''
-plt1 = plt.figure(1)
-plt.scatter(xaxis, yaxis, s=50, c=kmeans)
-plt.draw()
-'''
+
 visualizer = KElbowVisualizer(KMeans(), k=(2,10))
 
-visualizer.fit(imported)        # Fit the data to the visualizer
-visualizer.show()  # Finalize and render the figure
+visualizer.fit(imported)
+visualizer.show()
 elbowval = visualizer.elbow_value_
 print("Optimal number of Clusters:", elbowval)
 with open('optimal_clusters.txt', 'w') as file:

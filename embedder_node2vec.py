@@ -1,5 +1,4 @@
 import networkx as nx
-import matplotlib.pyplot as plt
 from node2vec import Node2Vec
 
 G=nx.Graph()

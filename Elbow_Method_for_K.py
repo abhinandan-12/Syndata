@@ -29,11 +29,7 @@ yaxis = []
 for x in imported:
     xaxis.append(x[0])
     yaxis.append(x[1])
-'''
-plt1 = plt.figure(1)
-plt.scatter(xaxis, yaxis, s=50, c=kmeans)
-plt.draw()
-'''
+
 distortions = []
 inertias = []
 mapping1 = {}
