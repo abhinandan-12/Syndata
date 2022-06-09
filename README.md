@@ -1,7 +1,17 @@
 # Syndata
-## Social network visualization using Python-NetworkX
-### Files and their usages:
+## Network visualization using Python-NetworkX
 
+### Run 'dependencies.py' before first run to initialize the required modules and directories
+
+### Application:
+#### Run the scripts in following order:
+>1. Run **connection_list_generator / matrix_generator** to first generate either an edgelist or a matrix
+>2. Then run **connection_to_graph_matrix / matrix_to_graph_list** to convert to an adjacency matrix and a networkx graph
+>3. After that run **automated_elbow_method / silhoutte_method** to find the optimal number of clusters.
+>4. Next run **embedder_graphviz / embedder_node2vec** to convert to a dimensionally effecient object
+>5. Finally run **clustering_graphviz / clustering_node2vec** to visualize the clusters in a networkx graph.
+
+### Files and their usages:
 #### Data generation and Conversion
 >##### 1. connection_list_generator.py
 >For generating random edgelist. Can be used for drawing NetworkX graphs and converting to Numpy adjacency matrix.
