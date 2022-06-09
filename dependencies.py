@@ -14,6 +14,7 @@ os.system(shell + 'pip3 install NetworkX sklearn numpy matplotlib scikit yellowb
 os.system(shell + clr)
 
 #create dirs
+print("Creating required directories")
 dirs = ['Agglomerative','Birch','BisectingKMeans','KMeans','MiniBatchKMeans','Spectral']
 os.system('mkdir Graphviz')
 os.chdir('Graphviz')
@@ -24,3 +25,5 @@ os.system('mkdir Node2vec')
 os.chdir('Node2vec')
 for i in dirs:
     os.system('mkdir '+str(i))
+
+print("Done!")
