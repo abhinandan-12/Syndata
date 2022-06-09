@@ -18,9 +18,9 @@ dirs = ['Agglomerative','Birch','BisectingKMeans','KMeans','MiniBatchKMeans','Sp
 os.system('mkdir Graphviz')
 os.system('cd Graphviz')
 for i in dirs:
-    os.system('mkdir'+str(i))
+    os.system('mkdir '+str(i))
 os.system('cd ..')
 os.system('mkdir Node2vec')
 os.system('cd Node2vec')
 for i in dirs:
-    os.system('mkdir'+str(i))
+    os.system('mkdir '+str(i))
