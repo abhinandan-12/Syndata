@@ -10,7 +10,7 @@ elif os.name=='posix': #linux/mac
 
 #install modules and libs
 print("Checking required modules")
-os.system(shell + 'pip3 install NetworkX sklearn numpy matplotlib scikit yellowbrick Node2vec graphviz pydot')
+os.system(shell + 'pip3 install NetworkX sklearn numpy matplotlib scikit-learn yellowbrick Node2vec graphviz pydot')
 os.system(shell + clr)
 
 #create dirs
