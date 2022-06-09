@@ -16,11 +16,11 @@ os.system(shell + clr)
 #create dirs
 dirs = ['Agglomerative','Birch','BisectingKMeans','KMeans','MiniBatchKMeans','Spectral']
 os.system('mkdir Graphviz')
-os.system('cd Graphviz')
+os.chdir('Graphviz')
 for i in dirs:
     os.system('mkdir '+str(i))
-os.system('cd ..')
+os.chdir('..')
 os.system('mkdir Node2vec')
-os.system('cd Node2vec')
+os.chdir('Node2vec')
 for i in dirs:
     os.system('mkdir '+str(i))
