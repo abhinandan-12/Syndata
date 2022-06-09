@@ -93,3 +93,9 @@
 
 >##### 14. graph.xlsx
 >Contains Location vs Age graph
+> 
+> 1. Run connection_list_generator / matrix_generator to first generate either an edgelist or a matrix
+2. Then run connection_to_graph_matrix / matrix_to_graph_list to convert to an adjacency matrix and a networkx graph
+3. After that run automated_elbow_method / silhoutte_method to find the optimal number of clusters.
+4. Next run embedder_graphviz / embedder_node2vec to convert to a dimensionally effecient object
+5. Finally run clustering_graphviz / clustering_node2vec to visualize the clusters in a networkx graph.
